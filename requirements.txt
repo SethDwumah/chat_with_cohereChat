@@ -1,0 +1,8 @@
+streamlit
+cohere
+langchain-community
+langchain
+python-dotenv
+langchain_experimental
+tabulate
+streamlit-chat
