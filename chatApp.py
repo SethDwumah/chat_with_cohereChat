@@ -5,7 +5,7 @@ from langchain.chains import ConversationChain
 from langchain_community.llms import Cohere
 from langchain_community.chat_models import ChatCohere
 from langchain.memory import ConversationBufferMemory
-from streamlit_chat import message
+from streamlit_chat import message,chat_input
 from langchain.schema import SystemMessage, HumanMessage,AIMessage
 
 
@@ -35,14 +35,14 @@ def main():
             ]
     
 
-    with st.sidebar:
-        user_input=st.text_input("Ask anything",key='user_input')
+    # with st.sidebar:
+    #     user_input=st.text_input("Ask anything",key='user_input')
 
-        if user_input:
-            st.session_state.messages.append(HumanMessage(content=user_input))
-            with st.spinner("Thinking..."): 
-                response = chat(st.session_state.messages)
-            st.session_state.messages.append(AIMessage(content=response.content))
+    #     if user_input:
+    #         st.session_state.messages.append(HumanMessage(content=user_input))
+    #         with st.spinner("Thinking..."): 
+    #             response = chat(st.session_state.messages)
+    #         st.session_state.messages.append(AIMessage(content=response.content))
         
     placeholder = st.empty()
     with placeholder.container():
@@ -55,12 +55,12 @@ def main():
                 message(msg.content, is_user=False, key=str(i) + '_ai')
 
 
-    # user_input = chat_input("Ask anything", key='user_input')  # Use chat_input at the bottom
-    #     if user_input:  # Check if user input is not empty
-    #         st.session_state.messages.append(HumanMessage(content=user_input))
-    #         with st.spinner("Thinking..."):
-    #             response = chat(st.session_state.messages)
-    #         st.session_state.messages.append(AIMessage(content=response.content))
+    user_input = chat_input("Ask anything", key='user_input')  # Use chat_input at the bottom
+    if user_input:  # Check if user input is not empty
+            st.session_state.messages.append(HumanMessage(content=user_input))
+            with st.spinner("Thinking..."):
+                response = chat(st.session_state.messages)
+            st.session_state.messages.append(AIMessage(content=response.content))
 
 
 

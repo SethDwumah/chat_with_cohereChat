@@ -5,4 +5,4 @@ langchain
 python-dotenv
 langchain_experimental
 tabulate
-streamlit-chat
+streamlit_chat
