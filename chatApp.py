@@ -12,7 +12,8 @@ from langchain.schema import SystemMessage, HumanMessage,AIMessage
 def init():
     st.set_page_config(page_title="Chat with Cohere Chat Assistant",page_icon=":robot:")
     st.header("Chat with Sethyne, AI Assistant!")
-    load_dotenv()
+    
+    #load_dotenv()
 
     if os.getenv("COHERE_API_KEY") is None or os.getenv("COHERE_API_KEY") =="":
         print("COHERE_API_KEY is not set. Please add your key to env")
@@ -26,7 +27,7 @@ def main():
 
     init()
 
-    chat= ChatCohere(model='command',temperature=0.75)
+    chat= ChatCohere(model='command',temperature=0.75,cohere_api_key='KLxxk4D5YgzHbisanSwQe5nWIBCuLIUC6gCbxAyF')
 
     if "messages" not in st.session_state:
         
