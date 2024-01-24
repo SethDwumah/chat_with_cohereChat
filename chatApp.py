@@ -29,14 +29,14 @@ def main():
         st.session_state.messages = [
             SystemMessage(content="You are a helpful assistant")
         ]
-    with st.sidebar:
-        user_input = st.chat_input("Ask anything", key='user_input')
+    
+    user_input = st.chat_input("Ask anything", key='user_input')
 
-        if user_input:
-            st.session_state.messages.append(HumanMessage(content=user_input))
-            with st.spinner("Thinking..."): 
-                response = chat(st.session_state.messages)
-            st.session_state.messages.append(AIMessage(content=response.content))
+    if user_input:
+        st.session_state.messages.append(HumanMessage(content=user_input))
+        with st.spinner("Thinking..."): 
+            response = chat(st.session_state.messages)
+        st.session_state.messages.append(AIMessage(content=response.content))
 
 
     messages = st.session_state.get('messages', [])
