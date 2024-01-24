@@ -6,7 +6,6 @@ from langchain_community.llms import Cohere
 from langchain_community.chat_models import ChatCohere
 from langchain.memory import ConversationBufferMemory
 from streamlit_chat import message
-from streamlit import chat_input
 from langchain.schema import SystemMessage, HumanMessage, AIMessage
 
 def init():
@@ -30,22 +29,25 @@ def main():
         st.session_state.messages = [
             SystemMessage(content="You are a helpful assistant")
         ]
-    
-    user_input = chat_input("Ask anything", key='user_input')
 
-    if user_input:
-        st.session_state.messages.append(HumanMessage(content=user_input))
-        with st.spinner("Thinking..."): 
-            response = chat(st.session_state.messages)
-        st.session_state.messages.append(AIMessage(content=response.content))
+    with st.sidebar:
+        user_input = st.text_input("Ask anything", key='user_input')
 
+        if user_input:
+            st.session_state.messages.append(HumanMessage(content=user_input))
+            with st.spinner("Thinking..."): 
+                response = chat(st.session_state.messages)
+            st.session_state.messages.append(AIMessage(content=response.content))
 
-    messages = st.session_state.get('messages', [])
-    for i, msg in enumerate(messages[1:]):
-        if i % 2 == 0:
-            message(msg.content, is_user=True, key=str(i) + '_user')
-        else:
-            message(msg.content, is_user=False, key=str(i) + '_ai')
+    placeholder = st.empty()
+    with placeholder.container():
+
+        messages = st.session_state.get('messages', [])
+        for i, msg in enumerate(messages[1:]):
+            if i % 2 == 0:
+                message(msg.content, is_user=True, key=str(i) + '_user')
+            else:
+                message(msg.content, is_user=False, key=str(i) + '_ai')
 
 if __name__ == '__main__':
     main()
