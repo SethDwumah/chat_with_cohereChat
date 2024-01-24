@@ -29,6 +29,8 @@ def main():
         st.session_state.messages = [
             SystemMessage(content="You are a helpful assistant")
         ]
+    with st.sidebar:
+        text =st.text_input("text")
 
     with st.sidebar:
         user_input = st.text_input("Ask anything", key='user_input')
