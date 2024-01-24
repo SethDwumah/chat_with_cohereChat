@@ -5,7 +5,8 @@ from langchain.chains import ConversationChain
 from langchain_community.llms import Cohere
 from langchain_community.chat_models import ChatCohere
 from langchain.memory import ConversationBufferMemory
-from streamlit_chat import message,chat_input
+from streamlit_chat import message
+from streamlit import chat_input
 from langchain.schema import SystemMessage, HumanMessage, AIMessage
 
 def init():
@@ -30,7 +31,7 @@ def main():
             SystemMessage(content="You are a helpful assistant")
         ]
     
-    user_input = chat_input("Ask anything", key='user_input')
+    user_input = st.chat_input("Ask anything", key='user_input')
 
     if user_input:
         st.session_state.messages.append(HumanMessage(content=user_input))
