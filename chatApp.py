@@ -12,32 +12,28 @@ def init():
     st.set_page_config(page_title="Chat with Cohere Chat Assistant", page_icon=":robot:")
     st.header("Chat with Sethyne, AI Assistant!")
     load_dotenv()
-
-    if os.getenv("COHERE_API_KEY") is None or os.getenv("COHERE_API_KEY") == "":
-        print("COHERE_API_KEY is not set. Please add your key to env")
-        exit(1)
-    else:
-        print('API key is set')
+    
 
 def main():
 
     init()
+    
 
-    chat = ChatCohere(model='command', temperature=0.75, cohere_api_key='KLxxk4D5YgzHbisanSwQe5nWIBCuLIUC6gCbxAyF')
+    chat = ChatCohere(model='command', temperature=0.75, cohere_api_key='KLxxk4D5YgzHbisanSwQe5nWIBCuLIUC6gCbxAyF',max_token=551)
 
     if "messages" not in st.session_state:
         st.session_state.messages = [
-            SystemMessage(content="You are a helpful assistant")
+            SystemMessage(content="You are a helpful assistant, called Sethyne")
         ]
 
-    with st.sidebar:
-        user_input = st.text_input("Ask anything", key='user_input')
+    #with st.sidebar:
+    user_input = st.chat_input("Ask anything", key='user_input')
 
-        if user_input:
-            st.session_state.messages.append(HumanMessage(content=user_input))
-            with st.spinner("Thinking..."): 
-                response = chat(st.session_state.messages)
-            st.session_state.messages.append(AIMessage(content=response.content))
+    if user_input:
+        st.session_state.messages.append(HumanMessage(content=user_input))
+        #with st.spinner("Thinking..."): 
+        response = chat(st.session_state.messages)
+        st.session_state.messages.append(AIMessage(content=response.content))
 
     placeholder = st.empty()
     with placeholder.container():
