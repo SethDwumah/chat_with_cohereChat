@@ -10,7 +10,7 @@ from langchain.schema import SystemMessage, HumanMessage, AIMessage
 
 def init():
     st.set_page_config(page_title="Chat with Cohere Chat Assistant", page_icon=":robot:")
-    st.header("Chat with Sethyne, AI Assistant! :robot:")
+    st.header("Chat with Sethyne, AI Assistant!")
     load_dotenv()
 
     if os.getenv("COHERE_API_KEY") is None or os.getenv("COHERE_API_KEY") == "":
@@ -39,15 +39,13 @@ def main():
                 response = chat(st.session_state.messages)
             st.session_state.messages.append(AIMessage(content=response.content))
 
-    placeholder = st.empty()
-    with placeholder.container:
 
-        messages = st.session_state.get('messages', [])
-        for i, msg in enumerate(messages[1:]):
-            if i % 2 == 0:
-                message(msg.content, is_user=True, key=str(i) + '_user')
-            else:
-                message(msg.content, is_user=False, key=str(i) + '_ai')
+    messages = st.session_state.get('messages', [])
+    for i, msg in enumerate(messages[1:]):
+        if i % 2 == 0:
+            message(msg.content, is_user=True, key=str(i) + '_user')
+        else:
+            message(msg.content, is_user=False, key=str(i) + '_ai')
 
 if __name__ == '__main__':
     main()
