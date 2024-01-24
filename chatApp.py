@@ -31,7 +31,7 @@ def main():
             SystemMessage(content="You are a helpful assistant")
         ]
     
-    user_input = st.chat_input("Ask anything", key='user_input')
+    user_input = chat_input("Ask anything", key='user_input')
 
     if user_input:
         st.session_state.messages.append(HumanMessage(content=user_input))
