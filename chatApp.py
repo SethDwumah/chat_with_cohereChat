@@ -77,9 +77,9 @@ def main():
         messages = st.session_state.get('messages', [])
         for i, msg in enumerate(messages[1:]):  # Skipping SystemMessage for display
             if isinstance(msg, HumanMessage):
-                st.chat_message(msg.content, is_user=True, key=str(i) + '_user')
+                message(msg.content, is_user=True, key=str(i) + '_user')
             else:
-                st.chat_message(msg.content, is_user=False, key=str(i) + '_ai')
+                message(msg.content, is_user=False, key=str(i) + '_ai')
                 
 if __name__ == '__main__':
     main()
