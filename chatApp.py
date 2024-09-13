@@ -72,7 +72,7 @@ def main():
             st.error(f"Error generating response: {str(e)}")
             
 
-   placeholder = st.empty()
+    placeholder = st.empty()
     with placeholder.container():
         messages = st.session_state.get('messages', [])
         for i, msg in enumerate(messages[1:]):  # Skipping SystemMessage for display
