@@ -2,7 +2,7 @@ import streamlit as st
 from dotenv import load_dotenv
 import os
 from langchain.chains import ConversationChain
-from langchain_cohere import Cohere
+#from langchain_cohere import Cohere
 from langchain_cohere import ChatCohere
 from langchain.memory import ConversationBufferMemory
 from streamlit_chat import message
