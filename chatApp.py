@@ -10,7 +10,7 @@ from langchain.schema import SystemMessage, HumanMessage, AIMessage
 
 def init():
     st.set_page_config(page_title="Chat with Cohere Chat Assistant", page_icon=":robot:")
-    st.header("Chat with Sethyne, AI Assistant!")
+    st.header("Chat with ReichRath, AI Assistant!")
     load_dotenv()
     
 
