@@ -19,7 +19,7 @@ def main():
     init()
     
 
-    chat = ChatCohere(model='command-r+', temperature=0.75, cohere_api_key='K9Is93rqVi3TXAoIvYgwJzuECMVIhLRzlzJ8r086',max_tokens=556)
+    chat = ChatCohere(model='command-r-plus-08-2024', temperature=0.75, cohere_api_key='K9Is93rqVi3TXAoIvYgwJzuECMVIhLRzlzJ8r086',max_tokens=556)
 
     AI_message = """
     As an intelligent assistant, you are expected to provide highly relevant, concise, and accurate responses to the user. 
