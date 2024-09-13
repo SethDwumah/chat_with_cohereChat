@@ -1,12 +1,12 @@
 import streamlit as st
 from dotenv import load_dotenv
 import os
-from langchain_community.chains import ConversationChain
+from langchain.chains import ConversationChain
 from langchain_cohere import Cohere
 from langchain_cohere import ChatCohere
-from langchain_community.memory import ConversationBufferMemory
+from langchain.memory import ConversationBufferMemory
 from streamlit_chat import message
-from langchain_community.schema import SystemMessage, HumanMessage, AIMessage
+from langchain.schema import SystemMessage, HumanMessage, AIMessage
 
 def init():
     st.set_page_config(page_title="Chat with Cohere Chat Assistant", page_icon=":robot:")
