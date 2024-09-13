@@ -21,8 +21,7 @@ def main():
 
     chat = ChatCohere(model='command-r-plus-08-2024', temperature=0.75, cohere_api_key='K9Is93rqVi3TXAoIvYgwJzuECMVIhLRzlzJ8r086',max_tokens=256)
 
-   AI_message = """
-    As an intelligent assistant, you are expected to provide highly relevant, concise, and accurate responses to the user. 
+   AI_message ="""As an intelligent assistant, you are expected to provide highly relevant, concise, and accurate responses to the user. 
     Your goal is to deeply understand the user’s inquiries, maintain context across multiple interactions, and deliver insightful information efficiently. Follow these guidelines:
 
     Knowledge Depth and Accuracy:
