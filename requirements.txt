@@ -1,5 +1,6 @@
 streamlit
-cohere
+langchain-cohere
+langchain_cohere
 langchain-community
 langchain
 python-dotenv
